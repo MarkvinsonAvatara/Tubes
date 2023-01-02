@@ -39,7 +39,7 @@
             Last Name: <input type="text" name="lastname"></input>
             <br>
             <br>
-            email: <input type="email" name="email"></input>
+            Email: <input type="email" name="email"></input>
             <br>
             <br>
             Username: <input type="text" name="username"></input>
