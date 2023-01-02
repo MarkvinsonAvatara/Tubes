@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #337;
+    font-family: sans-serif;
+}
+
+#content1 {
+    background-image: url("assets/home_bg_ril.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1280px;
+}
+
+#content1_1 {
+    color: white;
+    font-size: 78px;
+    font-family: Lucida-Sans-Unicode;
+}
+
+#content1_2 {
+    padding-top: 500px;
+
+}
+
+#content2 {
+    background-size: cover;
+    height: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1280px;
+    color: white
+}
+
+#button1 {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 300px;
+}
+
+#navbar {
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    background-color: green;
+}
+
+#navbar a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: green;
+}
+#content_match {
+    background-color: rgb(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+}
+
+#round {
+    border-radius: 100%;
+    color: white;
+    background-color: black;
+    aspect-ratio: 1/1;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+}
+
+#match {
+    width: 300px;
+    height: 200px;
+    margin-left: 25%;
+    color: white;
+    background-color: black;
+    float: left;
+
+}
