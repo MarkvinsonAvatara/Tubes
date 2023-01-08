@@ -18,15 +18,63 @@
         <a href="index.php">Home</a>
     </div>
     <br>
-    <div id="content_match">
-        <div id="round">Team 1</div>
-        <div>
-            <h1>Quarter Final</h1>
-            <h2>VS</h2>
-        </div>
-        <div id="round">Team 2</div>
+    <?php
+    session_start();
+    $DATABASE_HOST = 'localhost';
+    $DATABASE_USER = 'root';
+    $DATABASE_PASS = '';
+    $DATABASE_NAME = 'davay';
+    $con = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+    if ($con->connect_error) {
+        exit('Failed to connect to MySQL: ' . $con->connect_error);
+    }
+    $matches_query = "SELECT * FROM dt_match";
+    $matches = $con->query($matches_query);
+    while ($row = $matches->fetch_assoc()) {
+        if (isset($row["team1_id"]) && isset($row["team2_id"])) {
+            echo '
+            <div id="content_match">
+                <div id="round">Team ' . $row["team1_id"] . '</div>
+                <div class="match-title">
+                    <h1>' . $row["tipe_match"] . '</h1>
+                    <h2>VS</h2>
+                </div>
+                <div id="round">Team ' . $row["team2_id"] . '</div>
+            </div>';
+        } else if (isset($row["team1_id"]) && !isset($row["team2_id"])) {
+            echo '
+            <div id="content_match">
+                <div id="round">Team ' . $row["team1_id"] . '</div>
+                <div class="match-title">
+                    <h1>' . $row["tipe_match"] . '</h1>
+                    <h2>VS</h2>
+                </div>
+                <div id="round">TBD</div>
+            </div>';
+        } else if (!isset($row["team1_id"]) && isset($row["team2_id"])) {
+            echo '
+            <div id="content_match">
+                <div id="round">TBD</div>
+                <div class="match-title">
+                    <h1>' . $row["tipe_match"] . '</h1>
+                    <h2>VS</h2>
+                </div>
+                <div id="round">Team ' . $row["team2_id"] . '</div>
+            </div>';
+        } else if (!isset($row["team1_id"]) && !isset($row["team2_id"])) {
+            echo '
+            <div id="content_match">
+                <div id="round">TBD</div>
+                <div class="match-title">
+                    <h1>' . $row["tipe_match"] . '</h1>
+                    <h2>VS</h2>
+                </div>
+                <div id="round">TBD</div>
+            </div>';
+        }
+    }
+    ?>
 
-    </div>
 </body>
 
 </html>
