@@ -1,3 +1,11 @@
+<?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    if(!isset($_SESSION['loggedin'])){
+        header('Location:login.php');
+    }
+?>
 <html>
 
 <head>
@@ -11,7 +19,7 @@
 
 <body>
     <div id="navbar">
-        <a href="Member.php">Member</a>
+        <a href="profile.php">Member</a>
         <a href="team.php">Team</a>
         <a href="klasmen.php">Klasmen</a>
         <a href="match.php">Match</a>
@@ -19,7 +27,6 @@
     </div>
     <br>
     <?php
-    session_start();
     $DATABASE_HOST = 'localhost';
     $DATABASE_USER = 'root';
     $DATABASE_PASS = '';

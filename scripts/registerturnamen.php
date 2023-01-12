@@ -12,7 +12,8 @@ if ($con->connect_error) {
 $empty_matches_sql = "SELECT id_match, team1_id, team2_id FROM dt_match WHERE (team1_id is NULL OR team2_id is NULL) AND id_match <= 4";
 $empty_matches = $con->query($empty_matches_sql);
 if (mysqli_num_rows($empty_matches) == 0) {
-    echo "Maaf, turnamen sudah penuh";
+    $SESSION['full_message'] = 'Maaf, turnamen sudah penuh';
+    header('Location:../views/index.php');
 } else {
     $team_name = $_POST['team_name'];
     //player1
@@ -83,6 +84,7 @@ if (mysqli_num_rows($empty_matches) == 0) {
         //remove an array index from quarter_final
         // unset($quarter_final[$random_index]);
         // echo $empty_matches;
+        header('Location:../views/match.php');
     }
 }
 ?>

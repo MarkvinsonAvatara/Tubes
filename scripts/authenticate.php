@@ -28,5 +28,6 @@ if ($stmt = $con->prepare('SELECT id, password FROM dt_member WHERE username = ?
         echo 'Incorrect username and/or password!';
     }
     $stmt->close();
+    header('Location:../views/index.php');
 }
 ?>

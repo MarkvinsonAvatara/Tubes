@@ -48,7 +48,6 @@ body {
     margin-right: auto;
     cursor: pointer;
     border-radius: 12px;
-    width: 300px;
 }
 
 #navbar {
@@ -188,4 +187,98 @@ button:hover {
 
 .match-title {
     text-align: center;
+}
+
+#register-team-container {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    border-radius: 7px;
+    background-color: rgb(30, 35, 60);
+    color: white;
+    padding: 15px;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-team-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.register-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.player-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.wrapper {
+    min-height: 100vh;
+    min-width: 100%;
+    padding: 30px 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.btn-large {
+    width: 300px;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.team-wrapper {
+    box-sizing: border-box;
+    min-width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.team-box {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.team-box {
+    background-color: rgb(30, 35, 60);
+    height: 100%;
+    color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 7px;
+    flex-basis: 20%;
+}
+
+@media (max-width: 1000px) {
+    .team-box {
+        flex-basis: 40%;
+    }
+}
+
+@media (max-width: 550px) {
+    .team-box {
+        flex-basis: 100%;
+    }
 }

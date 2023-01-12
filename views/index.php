@@ -1,3 +1,11 @@
+<?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    if(!isset($_SESSION['loggedin'])){
+        header('Location:login.php');
+    }
+?>
 <html>
 
 <head>
@@ -9,7 +17,7 @@
 <body>
     <div id="navbar">
         <div class="nav-links">
-            <a href="Member.php">Member</a>
+            <a href="profile.php">Member</a>
             <a href="team.php">Team</a>
             <a href="klasmen.php">Klasmen</a>
             <a href="match.php">Match</a>
@@ -18,7 +26,7 @@
     </div>
     <div id="content1">
         <h1>Welcome to Davay,The Best Competitive Overwatch Platform</h1>
-        <a href="register.php"><button id="button1" type="submit">Register</button></a>
+        <a href="register.php"><button id="button1" type="submit" class="btn-large">Register</button></a>
     </div>
 </body>
 

@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    if(!isset($_SESSION['loggedin'])){
+        header('Location:login.php');
+    }
+?>
 <html>
 
 <head>
@@ -6,210 +13,168 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Teams</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <style>
-        body {
-            background-color: #337;
-            font-family: sans-serif;
-        }
-
-        #content {
-            border: 1px;
-            border-style: solid;
-            padding-left: 10px;
-            padding-right: 0px;
-            width: 35%;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            background-color: rgb(30, 35, 60);
-            margin-top: 5%;
-            margin-left: 32%;
-            color: white;
-        }
-
-        #button1 {
-            background-color: #04AA6D;
-            border: none;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-left: auto;
-            margin-right: auto;
-            cursor: pointer;
-            border-radius: 12px;
-            width: 96%;
-        }
-
-        #navbar {
-            overflow: hidden;
-            background-color: black;
-        }
-
-        #navbar a {
-            float: right;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        #inpt1 {
-            width: 95%;
-        }
-
-        #a1 {
-            text-decoration: none;
-            color: white;
-        }
-
-        .content {
-            padding: 16px;
-        }
-
-        .sticky {
-            position: fixed;
-            top: 0;
-            width: 100%;
-        }
-
-        .sticky+.content {
-            padding-top: 60px;
-        }
-    </style>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     </style>
 </head>
 
 <body>
     <div id="navbar">
-        <a href="Member.php">Member</a>
+        <a href="profile.php">Member</a>
         <a href="team.php">Team</a>
         <a href="klasmen.php">Klasmen</a>
         <a href="match.php">Match</a>
         <a href="index.php">Home</a>
     </div>
-    <div id="content">
-        <h1 align="center">Register Team</h1>
-        <form action="../scripts/registerturnamen.php" method="post">
-            Team Name:
-            <br>
-            <input id="inpt1" type="text" name="team_name"></input>
-            <br>
-            <br>
-            <div style="border-top: 1px;" align="center">Player 1</div>
-            Full Name:
-            <br>
-            <input id="inpt1" type="text" name="full_name1"></input>
-            <br>
-            <br>
-            Game Nickname:
-            <br>
-            <input id="inpt1" type="text" name="game_nickname1"></input>
-            <br>
-            <br>
-            Email:
-            <br>
-            <input id="inpt1" type="email" name="email1"></input>
-            <br>
-            <br>
-            Phone Number:
-            <br>
-            <input id="inpt1" type="number" name="tlp1"></input>
-            <br>
-            <br>
-            <div style="border-top: 1px;" align="center">Player 2</div>
-            Full Name:
-            <br>
-            <input id="inpt1" type="text" name="full_name2"></input>
-            <br>
-            <br>
-            Game Nickname:
-            <br>
-            <input id="inpt1" type="text" name="game_nickname2"></input>
-            <br>
-            <br>
-            Email:
-            <br>
-            <input id="inpt1" type="email" name="email2"></input>
-            <br>
-            <br>
-            Phone Number:
-            <br>
-            <input id="inpt1" type="number" name="tlp2"></input>
-            <br>
-            <br>
-            <div style="border-top: 1px;" align="center">Player 3</div>
-            Full Name:
-            <br>
-            <input id="inpt1" type="text" name="full_name3"></input>
-            <br>
-            <br>
-            Game Nickname:
-            <br>
-            <input id="inpt1" type="text" name="game_nickname3"></input>
-            <br>
-            <br>
-            Email:
-            <br>
-            <input id="inpt1" type="email" name="email3"></input>
-            <br>
-            <br>
-            Phone Number:
-            <br>
-            <input id="inpt1" type="number" name="tlp3"></input>
-            <br>
-            <br>
-            <div style="border-top: 1px;" align="center">Player 4</div>
-            Full Name:
-            <br>
-            <input id="inpt1" type="text" name="full_name4"></input>
-            <br>
-            <br>
-            Game Nickname:
-            <br>
-            <input id="inpt1" type="text" name="game_nickname4"></input>
-            <br>
-            <br>
-            Email:
-            <br>
-            <input id="inpt1" type="email" name="email4"></input>
-            <br>
-            <br>
-            Phone Number:
-            <br>
-            <input id="inpt1" type="number" name="tlp4"></input>
-            <br>
-            <br>
-            <div style="border-top: 1px;" align="center">Player 5</div>
-            Full Name:
-            <br>
-            <input id="inpt1" type="text" name="full_name5"></input>
-            <br>
-            <br>
-            Game Nickname:
-            <br>
-            <input id="inpt1" type="text" name="game_nickname5"></input>
-            <br>
-            <br>
-            Email:
-            <br>
-            <input id="inpt1" type="email" name="email5"></input>
-            <br>
-            <br>
-            Phone Number:
-            <br>
-            <input id="inpt1" type="number" name="tlp5"></input>
-            <br>
-            <br>
-            <a href="index.php"><button id="button1" type="submit">Register</button></a>
-        </form>
+    <div class="wrapper">
+        <div id="register-team-container">
+            <h1>Register Your Team</h1>
+            <form action="../scripts/registerturnamen.php" method="post" class="register-team-form">
+                <div class="register-field">
+                    <label for="team_name">Team Name:</label>
+                    <input type="text" name="team_name"></input>
+                </div>
+                <div class="player-form">
+                    <div style="border-top: 1px;">Player 1</div>
+                    <div class="register-field">
+                        <label for="full_name1">
+                        Full Name:
+                    </label>
+                        <input type="text" name="full_name1"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name1">
+                        Game Nickname:
+                    </label>
+                        <input type="text" name="game_nickname1"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name1">
+                        Email:
+                    </label>
+                        <input type="email" name="email1"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name1">
+                        Phone Number:
+                    </label>
+                        <input type="number" name="tlp1"></input>
+                    </div>
+                </div>
+                <div class="player-form">
+                    <div style="border-top: 1px;">Player 2</div>
+                    <div class="register-field">
+                        <label for="full_name2">
+                        Full Name:
+                    </label>
+                        <input type="text" name="full_name2"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name2">
+                        Game Nickname:
+                    </label>
+                        <input type="text" name="game_nickname2"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name2">
+                        Email:
+                    </label>
+                        <input type="email" name="email2"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name2">
+                        Phone Number:
+                    </label>
+                        <input type="number" name="tlp2"></input>
+                    </div>
+                </div>
 
+                <div class="player-form">
+                    <div style="border-top: 1px;">Player 3</div>
+                    <div class="register-field">
+                        <label for="full_name3">
+                        Full Name:
+                    </label>
+                        <input type="text" name="full_name3"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name3">
+                        Game Nickname:
+                    </label>
+                        <input type="text" name="game_nickname3"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name3">
+                        Email:
+                    </label>
+                        <input type="email" name="email3"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name3">
+                        Phone Number:
+                    </label>
+                        <input type="number" name="tlp3"></input>
+                    </div>
+                </div>
+
+                <div class="player-form">
+                    <div style="border-top: 1px;">Player 4</div>
+                    <div class="register-field">
+                        <label for="full_name4">
+                        Full Name:
+                    </label>
+                        <input type="text" name="full_name4"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name4">
+                        Game Nickname:
+                    </label>
+                        <input type="text" name="game_nickname4"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name4">
+                        Email:
+                    </label>
+                        <input type="email" name="email4"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name4">
+                        Phone Number:
+                    </label>
+                        <input type="number" name="tlp4"></input>
+                    </div>
+                </div>
+
+                <div class="player-form">
+                    <div style="border-top: 1px;">Player 5</div>
+                    <div class="register-field">
+                        <label for="full_name5">
+                        Full Name:
+                    </label>
+                        <input type="text" name="full_name5"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name5">
+                        Game Nickname:
+                    </label>
+                        <input type="text" name="game_nickname5"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name5">
+                        Email:
+                    </label>
+                        <input type="email" name="email5"></input>
+                    </div>
+                    <div class="register-field">
+                        <label for="full_name5">
+                        Phone Number:
+                    </label>
+                        <input type="number" name="tlp5"></input>
+                    </div>
+                </div>
+                <a href="index.php" class="login-link w-full"><button id="button1" type="submit" class="w-full">Register</button></a>
+            </form>
+        </div>
+        <script src="Navbar_S.js"></script>
     </div>
-    <script src="Navbar_S.js"></script>
-
 </body>
-
 </html>

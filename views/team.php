@@ -1,97 +1,54 @@
-<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Teams</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <style>
-        body {
-            background-color: #337;
-            font-family: sans-serif;
-        }
-
-        #content1 {
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 960px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 1280px;
-        }
-        #content1_1 {
-            color: white;
-            font-size: 78px;
-            font-family: Lucida-Sans-Unicode;
-        }
-        #content1_2 {
-            padding-top: 500px;
-
-        }
-        #content2 {
-            background-size: cover;
-            height: 960px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 1280px;
-        }
-        #button1 {
-            background-color: #04AA6D;
-            border: none;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-left: auto;
-            margin-right: auto;
-            cursor: pointer;
-            border-radius: 12px;
-            width: 300px;
-        }
-        #navbar {
-            overflow: hidden;
-            background-color: black;
-        }
-        #navbar a {
-            float: right;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        .content {
-            padding: 16px;
-        }
-
-        .sticky {
-            position: fixed;
-            top: 0;
-            width: 100%;
-        }
-        .sticky+.content {
-            padding-top: 60px;
-        }
-    </style>
-    </style>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="navbar">
-        <a href="Member.php">Member</a>
-        <a href="team.php">Team</a>
-        <a href="klasmen.php">Klasmen</a>
-        <a href="match.php">Match</a>
-        <a href="index.php">Home</a>
+        <div class="nav-links">
+            <a href="profile.php">Member</a>
+            <a href="team.php">Team</a>
+            <a href="klasmen.php">Klasmen</a>
+            <a href="match.php">Match</a>
+            <a href="index.php">Home</a>
+        </div>
     </div>
-    <div id="content1">
+    <div class="team-wrapper">
+        <?php
+        $DATABASE_HOST = 'localhost';
+        $DATABASE_USER = 'root';
+        $DATABASE_PASS = '';
+        $DATABASE_NAME = 'davay';
+        $con = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+        if ($con->connect_error) {
+            exit('Failed to connect to MySQL: ' . $con->connect_error);
+        }
+        $teams_query = "SELECT * FROM dt_team JOIN dt_player ON dt_team.id_team = dt_player.team_id";
+        $teams = $con->query($teams_query);
+        $i = 1;
+        while ($row = $teams->fetch_assoc()) {
+            if ($i % 5 == 1) {
+                echo    '<div class="team-box">
+                <h1 class="team-name">' . $row['team_name'] . '</h1>
+                <div class="player-info">'
+                    . $row['full_name'] . ' \''. $row['game_nickname'] .'\'' . '
+                    </div>';
+            } else if ($i % 5 == 0) {
+                echo '<div class="player-info">'
+                    . $row['full_name'] . ' \''. $row['game_nickname'] .'\'' . '
+                    </div></div>';
+            } else {
+                echo '<div class="player-info">'
+                    . $row['full_name'] . ' \''. $row['game_nickname'] .'\'' . '
+                    </div>';
+            }
+            $i++;
+        }
+        ?>
     </div>
-    <script src="Navbar_S.js"></script>
-
 </body>
 
 </html>
