@@ -24,10 +24,11 @@ if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 3) {
     exit('Password must be between 3 and 20 characters long!');
 }
 // update user info
-if ($stmt = $con->prepare('UPDATE dt_member SET password = ?, email = ?, first_name = ?, last_name = ?, birth_date = ? WHERE id = ?')) {
-    $stmt->bind_param('sssssi', $_POST['password'], $_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['birth_date'], $_SESSION['id']);
+if ($stmt = $con->prepare('UPDATE dt_member SET username = ?, password = ?, email = ?, first_name = ?, last_name = ?, birth_date = ? WHERE id = ?')) {
+    $stmt->bind_param('ssssssi',  $_POST['username'],$_POST['password'], $_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['birth_date'], $_SESSION['id']);
     $stmt->execute();
     $stmt->close();
+    header('Location: ../views/home.php');
 }
 $con->close();
 ?>

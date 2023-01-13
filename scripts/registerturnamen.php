@@ -13,7 +13,7 @@ $empty_matches_sql = "SELECT id_match, team1_id, team2_id FROM dt_match WHERE (t
 $empty_matches = $con->query($empty_matches_sql);
 if (mysqli_num_rows($empty_matches) == 0) {
     $SESSION['full_message'] = 'Maaf, turnamen sudah penuh';
-    header('Location:../views/index.php');
+    header('Location:../views/home.php');
 } else {
     $team_name = $_POST['team_name'];
     //player1

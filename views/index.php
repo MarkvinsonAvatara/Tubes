@@ -2,31 +2,39 @@
     if (!isset($_SESSION)) {
         session_start();
     }
-    if(!isset($_SESSION['loggedin'])){
-        header('Location:login.php');
+    if(isset($_SESSION['loggedin'])){
+        header('Location:home.php');
     }
 ?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset='utf-8'>
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
 </head>
 
 <body>
-    <div id="navbar">
-        <div class="nav-links">
-            <a href="profile.php">Member</a>
-            <a href="team.php">Team</a>
-            <a href="klasmen.php">Klasmen</a>
-            <a href="match.php">Match</a>
-            <a href="index.php">Home</a>
+    <div class="login-wrapper">
+        <div class="login-container">
+            <h1>SIGN IN</h1>
+            <form action="../scripts/authenticate.php" method="post" class="login-form">
+                <div class="form-field">
+                    <label for="username">Username</label>
+                    <input type="text" name="username"></input>
+                </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password"></input>
+                </div>
+                <button type="submit" class="login-button">SIGN IN</button>
+            </form>
+            <a href="Signup.php">Don't have an account?</a>
         </div>
-    </div>
-    <div id="content1">
-        <h1>Welcome to Davay,The Best Competitive Overwatch Platform</h1>
-        <a href="register.php"><button id="button1" type="submit" class="btn-large">Register</button></a>
     </div>
 </body>
 

@@ -9,13 +9,14 @@
 <body>
     <div id="navbar">
         <div class="nav-links">
-            <a href="profile.php">Member</a>
-            <a href="team.php">Team</a>
-            <a href="klasmen.php">Klasmen</a>
-            <a href="match.php">Match</a>
-            <a href="index.php">Home</a>
+                <a href="profile.php">My Profile</a>
+                <a href="team.php">Team</a>
+                <a href="klasmen.php">Klasmen</a>
+                <a href="match.php">Match</a>
+                <a href="home.php">Home</a>
+                <a href="logout.php">Logout</a>
+            </div>
         </div>
-    </div>
     <div class="team-wrapper">
         <?php
         $DATABASE_HOST = 'localhost';
@@ -31,18 +32,18 @@
         $i = 1;
         while ($row = $teams->fetch_assoc()) {
             if ($i % 5 == 1) {
-                echo    '<div class="team-box">
+                echo '<div class="team-box">
                 <h1 class="team-name">' . $row['team_name'] . '</h1>
                 <div class="player-info">'
-                    . $row['full_name'] . ' \''. $row['game_nickname'] .'\'' . '
+                    . $row['full_name'] . ' \'' . $row['game_nickname'] . '\'' . '
                     </div>';
             } else if ($i % 5 == 0) {
                 echo '<div class="player-info">'
-                    . $row['full_name'] . ' \''. $row['game_nickname'] .'\'' . '
+                    . $row['full_name'] . ' \'' . $row['game_nickname'] . '\'' . '
                     </div></div>';
             } else {
                 echo '<div class="player-info">'
-                    . $row['full_name'] . ' \''. $row['game_nickname'] .'\'' . '
+                    . $row['full_name'] . ' \'' . $row['game_nickname'] . '\'' . '
                     </div>';
             }
             $i++;

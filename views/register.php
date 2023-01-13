@@ -19,11 +19,12 @@
 
 <body>
     <div id="navbar">
-        <a href="profile.php">Member</a>
-        <a href="team.php">Team</a>
-        <a href="klasmen.php">Klasmen</a>
-        <a href="match.php">Match</a>
-        <a href="index.php">Home</a>
+    <a href="profile.php">My Profile</a>
+            <a href="team.php">Team</a>
+            <a href="klasmen.php">Klasmen</a>
+            <a href="match.php">Match</a>
+            <a href="home.php">Home</a>
+            <a href="logout.php">Logout</a>
     </div>
     <div class="wrapper">
         <div id="register-team-container">

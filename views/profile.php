@@ -3,7 +3,7 @@
         session_start();
     }
     if(!isset($_SESSION['loggedin'])){
-        header('Location:login.php');
+        header('Location:index.php');
     }
 ?>
 <!DOCTYPE html>
@@ -19,11 +19,14 @@
 
 <body>
     <div id="navbar">
-        <a href="profile.php">Member</a>
-        <a href="team.php">Team</a>
-        <a href="klasmen.php">Klasmen</a>
-        <a href="match.php">Match</a>
-        <a href="index.php">Home</a>
+        <div class="nav-links">
+        <a href="profile.php">Profile</a>
+            <a href="team.php">Team</a>
+            <a href="klasmen.php">Klasmen</a>
+            <a href="match.php">Match</a>
+            <a href="home.php">Home</a>
+            <a href="logout.php">Logout</a>
+        </div>
     </div>
     </div>
     <script src="Navbar_S.js"></script>
@@ -61,7 +64,7 @@
             <br> Username: <input type="text" name="username" value="'. $username .'"></input>
             <br> Password: <input type="password" name="password"></input>
             <br> Birth Date: <input type="date" value="Birth Date" name="birth_date" value="'. $birth_date .'"></input>
-            <input type="submit" value="Update Profile"></input>
+            <br> <input type="submit" value="Update Profile"></input>
         </form>';
     ?>
 </body>
