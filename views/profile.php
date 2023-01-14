@@ -57,14 +57,40 @@
     }
     
     echo '
-        <form form action="../scripts/editProfile.php" method="post">            
-            First Name: <input type="text" name="firstname" value="'. $firstname .'"></input>
-            <br> Last Name: <input type="text" name="lastname"value="'. $lastname .'"></input>
-            <br> Email: <input type="email" name="email" value="'. $email .'"></input>
-            <br> Username: <input type="text" name="username" value="'. $username .'"></input>
-            <br> Password: <input type="password" name="password"></input>
-            <br> Birth Date: <input type="date" value="Birth Date" name="birth_date" value="'. $birth_date .'"></input>
-            <br> <input type="submit" value="Update Profile"></input>
+        <form form action="../scripts/editProfile.php" method="post">
+            <div class="container">
+                <h1 id="editProf">Edit Profile</h2>
+                <!-- class="inputProfile" -->
+                <h3 class="updateProfile">
+                    <label>First Name:</label>
+                    <input type="text" name="firstname" value="'. $firstname .'"></input>
+                </h3>
+                <h3 class="updateProfile">
+                    <label>Last Name:</label>
+                    <input type="text" name="lastname"value="'. $lastname .'"></input>
+                </h3>
+                <h3 class="updateProfile">
+                    <label>Email:</label>
+                    <input type="email" name="email" value="'. $email .'"></input>
+                </h3>
+                <h3 class="updateProfile">
+                    <label>Username:</label>
+                    <input type="text" name="username" value="'. $username .'"></input>
+                </h3>
+                <h3 class="updateProfile">
+                    <label>Password:</label>
+                    <input type="password" name="password"></input>
+                </h3>
+                <h3 class="updateProfile">
+                    <label>Birth Date:</label>
+                    <input type="date" value="Birth Date" name="birth_date" value="'. $birth_date .'"></input>
+                </h3>
+                
+                <button class="btnUpdateProf" type="submit">
+                    <!-- <input type="submit" value="Update Profile"></input> -->
+                    Update Profile
+                </button>  
+            </div>    
         </form>';
     ?>
 </body>

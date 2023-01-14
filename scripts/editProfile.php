@@ -9,19 +9,24 @@ if (mysqli_connect_errno()) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
-    exit('Please complete the registration form!');
+    echo '<script type="text/javascript">alert("Please complete the registration form!");</script>';
+    exit();
 }
 if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['birth_date']) ||empty($_POST['email'])) {
-    exit('Please complete the registration form');
+    echo '<script type="text/javascript">alert("Please complete the registration form");</script>';
+    exit();
 }
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    exit('Email is not valid!');
+    echo '<script type="text/javascript">alert("Email is not valid!");</script>';
+    exit();
 }
 if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
-    exit('Username is not valid!');
+    echo '<script type="text/javascript">alert("Username is not valid!");</script>';
+    exit();
 }
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 3) {
-    exit('Password must be between 3 and 20 characters long!');
+    echo '<script type="text/javascript">alert("Password must be between 3 and 20 characters long!");</script>';
+    exit();
 }
 // update user info
 if ($stmt = $con->prepare('UPDATE dt_member SET username = ?, password = ?, email = ?, first_name = ?, last_name = ?, birth_date = ? WHERE id = ?')) {
