@@ -174,8 +174,5 @@
                 </div>
                 <a href="index.php" class="login-link w-full"><button id="button1" type="submit" class="w-full">Register</button></a>
             </form>
-        </div>
-        <script src="Navbar_S.js"></script>
-    </div>
 </body>
 </html>
