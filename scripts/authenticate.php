@@ -1,3 +1,5 @@
+<html>
+<body>
 <?php
 session_start();
 $DATABASE_HOST = 'localhost';
@@ -20,14 +22,42 @@ if ($stmt = $con->prepare('SELECT id, password FROM dt_member WHERE username = ?
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
-            echo 'Welcome ' . $_SESSION['name'] . '!';
-            header('Location:../views/home.php');
+            echo "
+            <script type='text/javascript'>
+            alert('logged in')
+            window.location = '../views/home.php'
+            </script>
+            ";
+        }else if ($_POST['username'] === 'admin' && $_POST['password'] === 'admin'){
+        session_regenerate_id();
+        $_SESSION['loggedin'] = TRUE;
+        $_SESSION['name'] = $_POST['username'];
+        $_SESSION['id'] = $id;
+        echo "
+            <script type='text/javascript'>
+            alert('logged in')
+            window.location = '../views/index.php'
+            </script>
+            ";
+        
         } else {
-            echo 'Incorrect username and/or password!';
+            echo "
+            <script type='text/javascript'>
+            alert('Login gagal periksa username dan password anda kembali')
+            window.location = '../views/index.php'
+            </script>
+            ";
         }
     } else {
-        echo 'Incorrect username and/or password!';
+        echo "
+        <script type='text/javascript'>
+        alert('Login gagal periksa username dan password anda kembali')
+        window.location = '../views/index.php'
+        </script>
+        ";
     }
     $stmt->close();
 }
 ?>
+</body>
+</html>

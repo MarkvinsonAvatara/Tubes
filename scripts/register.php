@@ -11,7 +11,7 @@ if (mysqli_connect_errno()) {
 if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
     exit('Please complete the registration form!');
 }
-if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['birth_date']) ||empty($_POST['email'])) {
+if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['birth_date']) || empty($_POST['email'])) {
     exit('Please complete the registration form');
 }
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -31,16 +31,29 @@ if ($stmt = $con->prepare('SELECT id, password FROM dt_member WHERE username = ?
         echo 'Username exists, please choose another!';
     } else {
         if ($stmt = $con->prepare('INSERT INTO dt_member (first_name, last_name, email, username, password, birth_date) VALUES (?, ?, ?, ?, ?, ?)')) {
-            $stmt->bind_param('ssssss', $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['username'],$_POST['password'], $_POST['birth_date']);
+            $stmt->bind_param('ssssss', $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['birth_date']);
             $stmt->execute();
-            echo 'You have successfully registered, you can now login!';
+            echo "
+            <script type='text/javascript'>
+            alert('Anda Berhasil Sign Up!')
+            window.location = '../views/index.php'
+            </script>
+            ";
         } else {
-            echo 'Could not prepare statement!';
+            echo "
+            <script type='text/javascript'>
+            alert('Periksa Kembali data yang anda isi dan jangan ada yang kosong!!!')
+            </script>
+            ";
         }
     }
     $stmt->close();
 } else {
-    echo 'Could not prepare statement!';
+    echo "
+        <script type='text/javascript'>
+        alert('Periksa Kembali data yang anda isi dan jangan ada yang kosong!!!')
+        </script>
+        ";
 }
 $con->close();
 ?>

@@ -1,6 +1,9 @@
 Must do before 16 of January:
 
-1. Benerin Tampilan Profile
-2. Bikin Bracket
-3. Pop up Message
-4. 1 member cuman bisa daftar 1 tim
+1. Benerin Tampilan edit Profile --> ini udah
+2. Bikin Bracket + nyambungin --> otw
+3. Pop up Message --> udah
+4. 1 member cuman bisa daftar 1 tim --> udah (kayaknya)
+5. Tampilan Admin buat update score supaya gak manual sama buat  update delete team beserta membernya--> blm
+
+

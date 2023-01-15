@@ -1,4 +1,11 @@
 <?php
+//if (!isset($_SESSION)) {
+// session_start();
+//}
+//if (!isset($_SESSION['loggedin'])) {
+    header('Location:index.php');
+//}
+
 session_start();
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
@@ -18,7 +25,86 @@ if ($stmt = $con->prepare('UPDATE dt_match SET team1_id = ?, team2_id = ?, score
     $stmt->execute();
     echo '<script type="text/javascript">alert("Match updated successfully!");</script>';
     $stmt->close();
-    header('Location: ../views/match.php');
+    switch ($_POST['id_match']) {
+        case 1:
+            if ($_POST['score1'] > $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team1_id = ? WHERE id_match = 5');
+                $stmt->bind_param('s', $_POST['team1_id']);
+                $stmt->execute();
+                $stmt->close();
+            } else if ($_POST['score1'] < $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team1_id = ? WHERE id_match = 5');
+                $stmt->bind_param('s', $_POST['team2_id']);
+                $stmt->execute();
+                $stmt->close();
+            } 
+            break;
+        case 2:
+            if ($_POST['score1'] > $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team2_id = ? WHERE id_match = 5');
+                $stmt->bind_param('s', $_POST['team1_id']);
+                $stmt->execute();
+                $stmt->close();
+            } else if ($_POST['score1'] < $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team2_id = ? WHERE id_match = 5');
+                $stmt->bind_param('s', $_POST['team2_id']);
+                $stmt->execute();
+                $stmt->close();
+            } 
+            break;
+        case 3:
+            if ($_POST['score1'] > $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team1_id = ? WHERE id_match = 6');
+                $stmt->bind_param('s', $_POST['team1_id']);
+                $stmt->execute();
+                $stmt->close();
+            } else if ($_POST['score1'] < $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team1_id = ? WHERE id_match = 6');
+                $stmt->bind_param('s', $_POST['team2_id']);
+                $stmt->execute();
+                $stmt->close();
+            } 
+            break;
+        case 4:
+            if ($_POST['score1'] > $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team2_id = ? WHERE id_match = 6');
+                $stmt->bind_param('s', $_POST['team1_id']);
+                $stmt->execute();
+                $stmt->close();
+            } else if ($_POST['score1'] < $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team2_id = ? WHERE id_match = 6');
+                $stmt->bind_param('s', $_POST['team2_id']);
+                $stmt->execute();
+                $stmt->close();
+            } 
+            break;
+        case 5 :
+            if ($_POST['score1'] > $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team1_id = ? WHERE id_match = 7');
+                $stmt->bind_param('s', $_POST['team1_id']);
+                $stmt->execute();
+                $stmt->close();
+            } else if ($_POST['score1'] < $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team1_id = ? WHERE id_match = 7');
+                $stmt->bind_param('s', $_POST['team2_id']);
+                $stmt->execute();
+                $stmt->close();
+            }     
+                break;
+        case 6:
+            if ($_POST['score1'] > $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team2_id = ? WHERE id_match = 7');
+                $stmt->bind_param('s', $_POST['team1_id']);
+                $stmt->execute();
+                $stmt->close();
+            } else if ($_POST['score1'] < $_POST['score2']) {
+                $stmt = $con->prepare('UPDATE dt_match SET team2_id = ? WHERE id_match = 7');
+                $stmt->bind_param('s', $_POST['team2_id']);
+                $stmt->execute();
+                $stmt->close();
+            }    
+            break;
+    }
 } else {
     echo 'Could not prepare statement!';
 }

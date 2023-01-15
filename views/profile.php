@@ -1,10 +1,10 @@
 <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    if(!isset($_SESSION['loggedin'])){
-        header('Location:index.php');
-    }
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin'])) {
+    header('Location:index.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@
 <body>
     <div id="navbar">
         <div class="nav-links">
-        <a href="profile.php">Profile</a>
+            <a href="profile.php">Edit My Profile</a>
             <a href="team.php">Team</a>
             <a href="klasmen.php">Klasmen</a>
             <a href="match.php">Match</a>
@@ -29,7 +29,6 @@
         </div>
     </div>
     </div>
-    <script src="Navbar_S.js"></script>
     <?php
     $DATABASE_HOST = 'localhost';
     $DATABASE_USER = 'root';
@@ -38,7 +37,7 @@
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 
     if (mysqli_connect_errno()) {
-        die ('Failed to connect to MySQL: ' . mysqli_connect_error());
+        die('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
 
     if ($stmt = $con->prepare('SELECT id, first_name, last_name, email, birth_date, username FROM dt_member WHERE id = ?')) {
@@ -55,7 +54,7 @@
     } else {
         echo 'Could not prepare statement!';
     }
-    
+
     echo '
         <form form action="../scripts/editProfile.php" method="post">
             <div class="container">
@@ -63,19 +62,19 @@
                 <!-- class="inputProfile" -->
                 <h3 class="updateProfile">
                     <label>First Name:</label>
-                    <input type="text" name="firstname" value="'. $firstname .'"></input>
+                    <input type="text" name="firstname" value="' . $firstname . '"></input>
                 </h3>
                 <h3 class="updateProfile">
                     <label>Last Name:</label>
-                    <input type="text" name="lastname"value="'. $lastname .'"></input>
+                    <input type="text" name="lastname"value="' . $lastname . '"></input>
                 </h3>
                 <h3 class="updateProfile">
                     <label>Email:</label>
-                    <input type="email" name="email" value="'. $email .'"></input>
+                    <input type="email" name="email" value="' . $email . '"></input>
                 </h3>
                 <h3 class="updateProfile">
                     <label>Username:</label>
-                    <input type="text" name="username" value="'. $username .'"></input>
+                    <input type="text" name="username" value="' . $username . '"></input>
                 </h3>
                 <h3 class="updateProfile">
                     <label>Password:</label>
@@ -83,7 +82,7 @@
                 </h3>
                 <h3 class="updateProfile">
                     <label>Birth Date:</label>
-                    <input type="date" value="Birth Date" name="birth_date" value="'. $birth_date .'"></input>
+                    <input type="date" value="Birth Date" name="birth_date" value="' . $birth_date . '"></input>
                 </h3>
                 
                 <button class="btnUpdateProf" type="submit">

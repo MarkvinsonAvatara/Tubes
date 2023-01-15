@@ -1,10 +1,10 @@
 <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    if(!isset($_SESSION['loggedin'])){
-        header('Location:index.php');
-    }
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin'])) {
+    header('Location:index.php');
+}
 ?>
 <html>
 
@@ -17,7 +17,7 @@
 <body>
     <div id="navbar">
         <div class="nav-links">
-        <a href="profile.php">My Profile</a>
+            <a href="profile.php">Edit My Profile</a>
             <a href="team.php">Team</a>
             <a href="klasmen.php">Klasmen</a>
             <a href="match.php">Match</a>
