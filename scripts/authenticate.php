@@ -19,7 +19,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM dt_member WHERE username = ?
         $stmt->fetch();
         if ($_POST['password'] === 'admin' && $password === 'admin' ){
                 session_regenerate_id();
-                $_SESSION['adminin'] = 7;
+                $_SESSION['adminin'] = 13;
                 $_SESSION['loggedin'] = TRUE;
                 $_SESSION['name'] = $_POST['username'];
                 $_SESSION['id'] = $id;

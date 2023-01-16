@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <head>
     <meta charset='utf-8'>
-    <title>Home</title>
+    <title>Team</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -49,7 +49,7 @@ if (!isset($_SESSION['loggedin'])) {
                 echo '<div class="player-info">'
                     . $row['full_name'] . ' \'' . $row['game_nickname'] . '\'' . '
                     </div>';
-                    if ($_SESSION['adminin'] == 7) {
+                    if ($_SESSION['adminin'] == 13) {
                         echo '<form action="../scripts/delete_team.php" method="post">
                         <input type="hidden" name="id_team" value="' . $row['id_team'] . '">
                         <input type="submit" value="Delete">

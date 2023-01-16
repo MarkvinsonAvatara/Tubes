@@ -67,7 +67,7 @@
                     <label>Player '. $i .' Name:</label>
                     <input type="text" name="full_name'.$i.'" value="' . $row['full_name'] . '"></input>
                     <label>Game Nickname:</label>
-                    <input type="text" name="game_nickname '.$i.'" value="' . $row['game_nickname'] . '"></input>
+                    <input type="text" name="game_nickname'.$i.'" value="' . $row['game_nickname'] . '"></input>
                 </h3>
             ';
             $i++;

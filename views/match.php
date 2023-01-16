@@ -48,17 +48,17 @@ if (!isset($_SESSION['loggedin'])) {
                 <div>' . $row["score1"] . '</div>
                 <div class="match-title">
                     <h1>' . $row["tipe_match"] . '</h1>';
-            if ($_SESSION['adminin'] == 7) {
+            if ($_SESSION['adminin'] == 13) {
                 echo '<form action="edit_match.php" method="post" class="register-team-form">
-                <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
-                <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">
-                <input type="hidden" name="score1" value="' . $row["score1"] . '">
-                <input type="hidden" name="score2" value="' . $row["score2"] . '">
-                <input type="hidden" name="team1_id" value="' . $row["team1_id"] . '">
-                <input type="hidden" name="team2_id" value="' . $row["team2_id"] . '">
-                <input type="hidden" name="team1_name" value="' . $row["team1_name"] . '">
-                <input type="hidden" name="team2_name" value="' . $row["team2_name"] . '">
-                <input type="submit" name="submit" value="Edit">
+                    <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
+                    <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">
+                    <input type="hidden" name="score1" value="' . $row["score1"] . '">
+                    <input type="hidden" name="score2" value="' . $row["score2"] . '">
+                    <input type="hidden" name="team1_id" value="' . $row["team1_id"] . '">
+                    <input type="hidden" name="team2_id" value="' . $row["team2_id"] . '">
+                    <input type="hidden" name="team1_name" value="' . $row["team1_name"] . '">
+                    <input type="hidden" name="team2_name" value="' . $row["team2_name"] . '">
+                    <input type="submit" name="submit" value="Edit">
                 </form>';
             }
             echo '</div>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div>' . $row["score1"] . '</div>
                 <div class="match-title">
                     <h1>' . $row["tipe_match"] . '</h1>';
-            if ($_SESSION['adminin'] == 7) {
+            if ($_SESSION['adminin'] == 13) {
                 echo '<form action="edit_match.php" method="post" class="register-team-form">
                 <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
                 <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">
@@ -97,7 +97,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div>' . $row["score1"] . '</div>
                 <div class="match-title">
                     <h1>' . $row["tipe_match"] . '</h1>';
-            if ($_SESSION['adminin'] == 7) {
+            if ($_SESSION['adminin'] == 13) {
                 echo '<form action="edit_match.php" method="post" class="register-team-form">
                 <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
                 <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">
@@ -122,7 +122,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div>' . $row["score1"] . '</div>
                 <div class="match-title">
                     <h1>' . $row["tipe_match"] . '</h1>';
-            if ($_SESSION['adminin'] == 7) {
+            if ($_SESSION['adminin'] == 13) {
                 echo '<form action="edit_match.php" method="post" class="register-team-form">
                         <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
                         <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">

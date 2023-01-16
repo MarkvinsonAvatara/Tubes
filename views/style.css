@@ -380,7 +380,7 @@ button:hover {
 }
 
 .containerk {
-    max-width: 1100px;
+    max-width: 1920px;
     margin: 0 auto;
     display: block;
     display: -webkit-box;
@@ -603,7 +603,7 @@ button:hover {
 
 
 
-@media screen and (min-width: 981px) and (max-width: 1099px) {
+@media screen and (min-width: 1000px) and (max-width: 1920px) {
     .containerk {
         margin: 0 1%;
     }
@@ -613,7 +613,7 @@ button:hover {
     }
 
     .split {
-        width: 43%;
+        width: 103%;
     }
 
     .split-one .vote-box {

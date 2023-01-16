@@ -11,20 +11,20 @@ if (isset($_POST['id_team'])) {
     }
 
     $id_team = $_POST['id_team'];
-    
-    //delete team from database
-    $sql = "DELETE FROM dt_team WHERE id_team = $id_team";
+    //delete team from match and update score
+    $sql = "UPDATE dt_match SET team1_id = NULL, score1 = 0, score2 = 0 WHERE team1_id = '$id_team'";
     $result = mysqli_query($con, $sql);
-
-    //delete team from match
-    $sql = "UPDATE dt_match SET team1_id = NULL WHERE team1_id = '$id_team'";
-    $result = mysqli_query($con, $sql);
-    $sql = "UPDATE dt_match SET team2_id = NULL WHERE team2_id = '$id_team'";
+    $sql = "UPDATE dt_match SET team2_id = NULL, score1 = 0, score2 = 0 WHERE team2_id = '$id_team'";
     $result = mysqli_query($con, $sql);
 
     //delete team from player
     $sql = "DELETE FROM dt_player WHERE team_id = $id_team";
     $result = mysqli_query($con, $sql);
+
+    //delete team from database
+    $sql = "DELETE FROM dt_team WHERE id_team = $id_team";
+    $result = mysqli_query($con, $sql);
+
 
     if ($result) {
         header("Location: ../views/team.php");

@@ -5,12 +5,20 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['loggedin'])) {
   header('Location:index.php');
 }
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'davay';
+$con = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if ($con->connect_error) {
+    exit('Failed to connect to MySQL: ' . $con->connect_error);
+}
 ?>
 <html>
 
 <head>
     <meta charset='utf-8'>
-    <title>Home</title>
+    <title>Klasmen</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
@@ -32,50 +40,56 @@ if (!isset($_SESSION['loggedin'])) {
             <a href="logout.php">Logout</a>
         </div>
     </div>
-    </div>
     <section id="bracket">
-  <div class="container">
-  <div class="split split-one">
-    <div class="round round-one current">
-      <div class="round-details">Quarter Final<br/><span class="date">March 8</span></div>
-      <ul class="matchup">
-        <li class="team team-top">Duke<span class="score">76</span></li>
-        <li class="team team-bottom">Virginia<span class="score">82</span></li>
-      </ul>
-      <ul class="matchup">
-        <li class="team team-top">Wake Forest<span class="score">64</span></li>
-        <li class="team team-bottom">Clemson<span class="score">56</span></li>
-      </ul>
-      <ul class="matchup">
-        <li class="team team-top">North Carolina<span class="score">68</span></li>
-        <li class="team team-bottom">Florida State<span class="score">54</span></li>
-      </ul>
-      <ul class="matchup">
-        <li class="team team-top">NC State<span class="score">74</span></li>
-        <li class="team team-bottom">Maryland<span class="score">92</span></li>
-      </ul>                     
-    </div>  <!-- END ROUND ONE -->
-
-    <div class="round round-two">
-      <div class="round-details">Semi Final<br/><span class="date">March 10</span></div>     
-      <ul class="matchup">
-        <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-        <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-      </ul> 
-      <ul class="matchup">
-        <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-        <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-      </ul>                  
-    </div>  <!-- END ROUND TWO -->
-    
-    <div class="round round-three">
-      <div class="round-details">Final<br/><span class="date">March 16</span></div>     
-      <ul class="matchup">
-        <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-        <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-      </ul>                    
-    </div>  <!-- END ROUND THREE -->    
-  </div> 
+    <div class="container">
+        <div class="split split-one">
+            <div class="round round-one current">
+                <div class="round-details">Quarter Final<br/></div>
+                <?php
+                  $query = "SELECT (SELECT team_name FROM dt_team WHERE dt_team.id_team = dt_match.team1_id) AS team1_name, (SELECT team_name FROM dt_team WHERE dt_team.id_team = dt_match.team2_id) AS team2_name, `score1`, `score2` FROM `dt_match` WHERE tipe_match = 'Quarter Final'";
+                  $teams = $con->query($query);
+                  while($row = $teams -> fetch_assoc()) {
+                    echo"
+                    <ul class='matchup'>
+                      <li class='team team-top'>" . $row['team1_name'] . "<span class='score'>" . $row['score1'] . "</span></li>
+                      <li class='team team-bottom'>" . $row['team2_name'] . "<span class='score'>" . $row['score2'] . "</span></li>
+                    </ul>
+                    ";
+                  }
+                ?>              
+            </div>  <!-- END ROUND ONE -->
+            <div class="round round-two">
+                <div class="round-details">Semi Final<br/></div>     
+                <?php
+                  $query = "SELECT (SELECT team_name FROM dt_team WHERE dt_team.id_team = dt_match.team1_id) AS team1_name, (SELECT team_name FROM dt_team WHERE dt_team.id_team = dt_match.team2_id) AS team2_name, `score1`, `score2` FROM `dt_match` WHERE tipe_match = 'Semi Final'";
+                  $teams = $con->query($query);
+                  while($row = $teams -> fetch_assoc()) {
+                    echo"
+                    <ul class='matchup'>
+                      <li class='team team-top'>" . $row['team1_name'] . "<span class='score'>" . $row['score1'] . "</span></li>
+                      <li class='team team-bottom'>" . $row['team2_name'] . "<span class='score'>" . $row['score2'] . "</span></li>
+                    </ul>
+                    ";
+                  }
+                ?>                  
+            </div>  <!-- END ROUND TWO -->
+            <div class="round round-three">
+                <div class="round-details">Final<br/></div>     
+                <?php
+                  $query = "SELECT (SELECT team_name FROM dt_team WHERE dt_team.id_team = dt_match.team1_id) AS team1_name, (SELECT team_name FROM dt_team WHERE dt_team.id_team = dt_match.team2_id) AS team2_name, `score1`, `score2` FROM `dt_match` WHERE tipe_match = 'Final'";
+                  $teams = $con->query($query);
+                  while($row = $teams -> fetch_assoc()) {
+                    echo"
+                    <ul class='matchup'>
+                      <li class='team team-top'>" . $row['team1_name'] . "<span class='score'>" . $row['score1'] . "</span></li>
+                      <li class='team team-bottom'>" . $row['team2_name'] . "<span class='score'>" . $row['score2'] . "</span></li>
+                    </ul>
+                    ";
+                  }
+                ?>  <!-- END ROUND THREE -->    
+            </div>
+        </div> 
+    </div> 
 </body>
 
 </html>
