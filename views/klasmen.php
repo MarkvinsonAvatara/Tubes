@@ -18,7 +18,7 @@ if ($con->connect_error) {
 
 <head>
     <meta charset='utf-8'>
-    <title>Klasmen</title>
+    <title>Bracket</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
@@ -32,7 +32,6 @@ if ($con->connect_error) {
 <body>
     <div id="navbar">
         <div class="nav-links">
-            <a href="profile.php">Edit My Profile</a>
             <a href="team.php">Team</a>
             <a href="klasmen.php">Klasmen</a>
             <a href="match.php">Match</a>

@@ -22,7 +22,7 @@ if ($_SESSION['adminin'] == 0) {
         <div class="nav-links">
             <a href="profile.php">Edit Members</a>
             <a href="team.php">Team</a>
-            <a href="klasmen.php">Klasmen</a>
+            <a href="klasmen.php">Bracket</a>
             <a href="match.php">Match</a>
             <a href="home.php">Home</a>
             <a href="logout.php">Logout</a>

@@ -14,7 +14,7 @@
         <div class="nav-links">
             <a href="profile.php">Edit My Profile</a>
             <a href="team.php">Team</a>
-            <a href="klasmen.php">Klasmen</a>
+            <a href="klasmen.php">Bracket</a>
             <a href="match.php">Match</a>
             <a href="home.php">Home</a>
             <a href="logout.php">Logout</a>
@@ -49,7 +49,7 @@
         echo '
             <form action="../scripts/update_team.php" method="post">
                 <div class="container">
-                    <h1 id="editProf">Edit Profile</h2>
+                    <h1 id="editProf">Edit Team</h2>
                     <!-- class="inputProfile" -->
                     <h3 class="updateProfile">
                         <label>Team Name:</label>

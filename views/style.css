@@ -401,7 +401,7 @@ button:hover {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    width: 42%;
+    /* width: 42%; */
     -webkit-flex-direction: row;
     -moz-flex-direction: row;
     flex-direction: row;
