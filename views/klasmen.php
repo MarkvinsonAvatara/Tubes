@@ -1,9 +1,9 @@
 <?php
 if (!isset($_SESSION)) {
-    session_start();
+  session_start();
 }
 if (!isset($_SESSION['loggedin'])) {
-    header('Location:home.php');
+  header('Location:index.php');
 }
 ?>
 <html>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
   <div class="container">
   <div class="split split-one">
     <div class="round round-one current">
-      <div class="round-details">Round 1<br/><span class="date">March 16</span></div>
+      <div class="round-details">Quarter Final<br/><span class="date">March 8</span></div>
       <ul class="matchup">
         <li class="team team-top">Duke<span class="score">76</span></li>
         <li class="team team-bottom">Virginia<span class="score">82</span></li>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['loggedin'])) {
     </div>  <!-- END ROUND ONE -->
 
     <div class="round round-two">
-      <div class="round-details">Round 2<br/><span class="date">March 18</span></div>     
+      <div class="round-details">Semi Final<br/><span class="date">March 10</span></div>     
       <ul class="matchup">
         <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
         <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
@@ -69,7 +69,7 @@ if (!isset($_SESSION['loggedin'])) {
     </div>  <!-- END ROUND TWO -->
     
     <div class="round round-three">
-      <div class="round-details">Round 3<br/><span class="date">March 22</span></div>     
+      <div class="round-details">Final<br/><span class="date">March 16</span></div>     
       <ul class="matchup">
         <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
         <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>

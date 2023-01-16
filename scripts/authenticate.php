@@ -17,9 +17,22 @@ if ($stmt = $con->prepare('SELECT id, password FROM dt_member WHERE username = ?
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($id, $password);
         $stmt->fetch();
-        if ($_POST['password'] === $password) {
+        if ($_POST['password'] === 'admin' && $password === 'admin' ){
+                session_regenerate_id();
+                $_SESSION['adminin'] = 7;
+                $_SESSION['loggedin'] = TRUE;
+                $_SESSION['name'] = $_POST['username'];
+                $_SESSION['id'] = $id;
+                echo "
+                    <script type='text/javascript'>
+                    alert('Welcome admin')
+                    window.location = '../views/home.php'
+                    </script>
+                    ";
+        } else if ($_POST['password'] === $password) {
             session_regenerate_id();
             $_SESSION['loggedin'] = TRUE;
+            $_SESSION['adminin'] = 0;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
             echo "
@@ -28,18 +41,6 @@ if ($stmt = $con->prepare('SELECT id, password FROM dt_member WHERE username = ?
             window.location = '../views/home.php'
             </script>
             ";
-        }else if ($_POST['username'] === 'admin' && $_POST['password'] === 'admin'){
-        session_regenerate_id();
-        $_SESSION['loggedin'] = TRUE;
-        $_SESSION['name'] = $_POST['username'];
-        $_SESSION['id'] = $id;
-        echo "
-            <script type='text/javascript'>
-            alert('logged in')
-            window.location = '../views/index.php'
-            </script>
-            ";
-        
         } else {
             echo "
             <script type='text/javascript'>

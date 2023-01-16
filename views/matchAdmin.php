@@ -2,8 +2,8 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-if (!isset($_SESSION['loggedin'])) {
-    header('Location:index.php');
+if ($_SESSION['adminin'] == 0) {
+    header('Location:home.php');
 }
 ?>
 <!DOCTYPE html>
@@ -43,21 +43,13 @@ if (!isset($_SESSION['loggedin'])) {
 
     //accept data from form
     $id_match = $_POST['id_match'];
+    $team1_id = $_POST['team1_id'];
+    $team2_id = $_POST['team2_id'];
+    $score1 = $_POST['score1'];
+    $score2 = $_POST['score2'];
+    $team1_name = $_POST['team1_name'];
+    $team2_name = $_POST['team2_name'];
 
-    if ($stmt = $con->prepare('SELECT id_match, team1_id, team2_id, score1, score2, tipe_match FROM dt_match WHERE id_match = ?')) {
-        $stmt->bind_param('s', $id_match);
-        $stmt->execute();
-        $stmt->store_result();
-        if ($stmt->num_rows > 0) {
-            $stmt->bind_result($id_match, $team1_id, $team2_id, $score1, $score2, $tipe_match);
-            $stmt->fetch();
-        } else {
-            echo 'No account exists with that id.';
-        }
-        $stmt->close();
-    } else {
-        echo 'Could not prepare statement!';
-    }
 
     echo '
         <form form action="../scripts/editMatch.php" method="post">
@@ -65,22 +57,22 @@ if (!isset($_SESSION['loggedin'])) {
                 <h1 id="editProf">Edit Match</h2>
                 <!-- class="inputProfile" -->
                 <h3 class="updateProfile">
-                    <label>Team 1:</label>
-                    <input type="text" name="team1_id" value="' . $team1_id . '"></input>
+                    <label>Team Home:</label>
+                    <label>' . $team1_name . '</label>
+                </h3>
+                <h3 class="updateProfile">  
+                <input type="text" name="score1" value="' . $score1 . '"></input>
                 </h3>
                 <h3 class="updateProfile">
-                    <label>Team 2:</label>
-                    <input type="text" name="team2_id"value="' . $team2_id . '"></input>
+                    <label>Team Away:</label>
+                    <label>' .  $team2_name . '</label>
                 </h3>
                 <h3 class="updateProfile">
-                    <label>Score 1</label>
-                    <input type="text" name="score1" value="' . $score1 . '"></input>
-                </h3>
-                <h3 class="updateProfile">
-                    <label>Score 2:</label>
                     <input type="text" name="score2" value="' . $score2 . '"></input>
                 </h3>
                 <input type="hidden" name="id_match" value="' . $id_match . '"></input>
+                <input type="hidden" name="team1_id" value="' . $team1_id . '"></input>
+                <input type="hidden" name="team2_id" value="' . $team2_id . '"></input>
 
                 <button class="btnUpdateProf" type="submit">
                     <!-- <input type="submit" value="Update Profile"></input> -->

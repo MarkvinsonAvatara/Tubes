@@ -1,12 +1,11 @@
 <?php
-//if (!isset($_SESSION)) {
-// session_start();
-//}
-//if (!isset($_SESSION['loggedin'])) {
+if (!isset($_SESSION)) {
+ session_start();
+}
+if (!isset($_SESSION['loggedin'])) {
     header('Location:index.php');
-//}
+}
 
-session_start();
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
 $DATABASE_PASS = '';
@@ -108,6 +107,6 @@ if ($stmt = $con->prepare('UPDATE dt_match SET team1_id = ?, team2_id = ?, score
 } else {
     echo 'Could not prepare statement!';
 }
-
+header('Location: ../views/match.php');
 $con->close();
 ?>
