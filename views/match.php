@@ -49,7 +49,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="match-title">
                     <h1>' . $row["tipe_match"] . '</h1>';
             if ($_SESSION['adminin'] == 7) {
-                echo '<form action="matchAdmin.php" method="post" class="register-team-form">
+                echo '<form action="edit_match.php" method="post" class="register-team-form">
                 <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
                 <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">
                 <input type="hidden" name="score1" value="' . $row["score1"] . '">
@@ -73,7 +73,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="match-title">
                     <h1>' . $row["tipe_match"] . '</h1>';
             if ($_SESSION['adminin'] == 7) {
-                echo '<form action="matchAdmin.php" method="post" class="register-team-form">
+                echo '<form action="edit_match.php" method="post" class="register-team-form">
                 <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
                 <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">
                 <input type="hidden" name="score1" value="' . $row["score1"] . '">
@@ -98,7 +98,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="match-title">
                     <h1>' . $row["tipe_match"] . '</h1>';
             if ($_SESSION['adminin'] == 7) {
-                echo '<form action="matchAdmin.php" method="post" class="register-team-form">
+                echo '<form action="edit_match.php" method="post" class="register-team-form">
                 <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
                 <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">
                 <input type="hidden" name="score1" value="' . $row["score1"] . '">
@@ -123,7 +123,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="match-title">
                     <h1>' . $row["tipe_match"] . '</h1>';
             if ($_SESSION['adminin'] == 7) {
-                echo '<form action="matchAdmin.php" method="post" class="register-team-form">
+                echo '<form action="edit_match.php" method="post" class="register-team-form">
                         <input type="hidden" name="id_match" value="' . $row["id_match"] . '">
                         <input type="hidden" name="tipe_match" value="' . $row["tipe_match"] . '">
                         <input type="hidden" name="score1" value="' . $row["score1"] . '">

@@ -1,5 +1,12 @@
 <html>
-
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin'])) {
+    header('Location:index.php');
+}
+?>
 <head>
     <meta charset='utf-8'>
     <title>Home</title>
@@ -33,14 +40,26 @@
         while ($row = $teams->fetch_assoc()) {
             if ($i % 5 == 1) {
                 echo '<div class="team-box">
-                <h1 class="team-name">' . $row['team_name'] . " registered by " . "'" . $row['username'] . "'" . '</h1>
+                <h1 class="team-name">' . $row['team_name'] . " registered by " . "'" . $row['username'] . "'" .
+                ' </h1> 
                 <div class="player-info">'
                     . $row['full_name'] . ' \'' . "'" . $row['game_nickname'] . '\'' . '
                     </div>';
             } else if ($i % 5 == 0) {
                 echo '<div class="player-info">'
                     . $row['full_name'] . ' \'' . $row['game_nickname'] . '\'' . '
-                    </div></div>';
+                    </div>';
+                    if ($_SESSION['adminin'] == 7) {
+                        echo '<form action="../scripts/delete_team.php" method="post">
+                        <input type="hidden" name="id_team" value="' . $row['id_team'] . '">
+                        <input type="submit" value="Delete">
+                        </form>';
+                        echo '<form action="../views/edit_team.php" method="post">
+                        <input type="hidden" name="id_team" value="' . $row['id_team'] . '">
+                        <input type="submit" value="Edit">
+                        </form>';
+                    }
+                echo '</div>';
             } else {
                 echo '<div class="player-info">'
                     . $row['full_name'] . ' \'' . $row['game_nickname'] . '\'' . '
